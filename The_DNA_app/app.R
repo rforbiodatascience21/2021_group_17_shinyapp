@@ -10,10 +10,10 @@
 library(shiny)
 
 # Run all scripts ---------------------------------------------------------
-source(file = "The_DNA_app/complement.R")
-source(file = "The_DNA_app/random_dna.R")
-source(file = "The_DNA_app/mk_codons.R")
-source(file = "The_DNA_app/dna_codons_to_aa.R")
+source(file = "complement.R")
+source(file = "random_dna.R")
+source(file = "mk_codons.R")
+source(file = "dna_codons_to_aa.R")
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
