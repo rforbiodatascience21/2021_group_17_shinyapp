@@ -28,12 +28,13 @@ ui <- fluidPage(
                          min=3, max=9999, step=3),
             
             actionButton("generate",
-                        "Generate new random DNA sequence")
+                         "Generate new random DNA sequence"),
+            width = 6
         ),
 
         # Show the results
         mainPanel(
-           textOutput("result")
+           verbatimTextOutput("result")
         )
     )
 )
@@ -44,6 +45,7 @@ server <- function(input, output) {
     x <- reactive({
         input$generate
         random_dna(input$l)
+        
     })
     
     output$result <- renderText(x())
