@@ -27,13 +27,13 @@ ui <- fluidPage(
             numericInput("l", "Number of bases", value=99,
                          min=3, max=9999, step=3),
             
-            actionButton("l",
+            actionButton("generate",
                         "Generate random DNA sequence")
         ),
 
         # Show a plot of the generated distribution
         mainPanel(
-           renderText(random_dna(l))
+           textOutput("result")
         )
     )
 )
@@ -41,7 +41,7 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
     
-    output$renderText <- random_dna(l)
+    output$result <- renderText(random_dna(input$l))
 
 }
 
