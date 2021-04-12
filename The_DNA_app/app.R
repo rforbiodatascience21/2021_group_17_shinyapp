@@ -21,27 +21,32 @@ ui <- fluidPage(
     # Application title
     titlePanel("Random DNA generator"),
 
-    # Sidebar with a slider input for number of bins 
+    # Sidebar with ooptions for the user
     sidebarLayout(
         sidebarPanel(
             numericInput("l", "Number of bases", value=99,
                          min=3, max=9999, step=3),
             
             actionButton("generate",
-                        "Generate random DNA sequence")
+                        "Generate new random DNA sequence")
         ),
 
-        # Show a plot of the generated distribution
+        # Show the results
         mainPanel(
            textOutput("result")
         )
     )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic
 server <- function(input, output) {
     
-    output$result <- renderText(random_dna(input$l))
+    x <- reactive({
+        input$generate
+        random_dna(input$l)
+    })
+    
+    output$result <- renderText(x())
 
 }
 
