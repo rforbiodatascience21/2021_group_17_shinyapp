@@ -42,10 +42,8 @@ ui <- fluidPage(
 # Define server logic
 server <- function(input, output) {
     
-    x <- reactive({
-        input$generate
+    x <- eventReactive(input$generate, {
         random_dna(input$l)
-        
     })
     
     output$result <- renderText(x())
